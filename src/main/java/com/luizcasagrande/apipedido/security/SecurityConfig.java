@@ -1,5 +1,6 @@
 package com.luizcasagrande.apipedido.security;
 
+import com.luizcasagrande.apipedido.config.CorsFilter;
 import com.luizcasagrande.apipedido.security.jwt.JwtAuthenticationFilter;
 import com.luizcasagrande.apipedido.security.jwt.JwtTokenVerifier;
 import com.luizcasagrande.apipedido.security.usuario.UsuarioService;
@@ -34,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement()
                 .sessionCreationPolicy(STATELESS)
                 .and()
+                .addFilterBefore(new CorsFilter(), JwtAuthenticationFilter.class)
                 .addFilter(new JwtAuthenticationFilter(authenticationManager(), secret))
                 .addFilterAfter(new JwtTokenVerifier(secret), JwtAuthenticationFilter.class)
                 .authorizeRequests()
