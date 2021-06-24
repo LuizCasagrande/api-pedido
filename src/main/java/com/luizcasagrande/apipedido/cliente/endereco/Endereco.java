@@ -28,9 +28,24 @@ public class Endereco {
     private String numero;
 
     @NotNull
-    @Size(min = 3, max = 100)
+    @Size(min = 2, max = 100)
     @Column(nullable = false, length = 100)
-    private String descricao;
+    private String rua;
+
+    @NotNull
+    @Size(min = 2, max = 100)
+    @Column(nullable = false, length = 100)
+    private String bairro;
+
+    @NotNull
+    @Size(min = 2, max = 100)
+    @Column(nullable = false, length = 100)
+    private String cidade;
+
+    @NotNull
+    @Size(min = 2, max = 100)
+    @Column(nullable = false, length = 100)
+    private String estado;
 
     @NotNull
     @Size(min = 8, max = 8)
